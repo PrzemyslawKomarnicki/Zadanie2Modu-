@@ -8,31 +8,7 @@ namespace RentCar
     {
         public static void Main(string[] args)
         {
-            // Program do zarządzania flotą
-            // Menu do wyboru wstępnej akcji
-            //1.  Zarządzanie Flotą
-            // Sprawdzenie czasu serwisu, sortowanie po najbliższej dacie.
-            // Wyznaczenie pojazdu na serwis
-            // Powrót do main menu
-            // Sprawdzenie listy wszystkich pojazdów                            
-            // Sortowanie po rodzaju pojazdu
-            // Dodawanie pojazdu do floty
-            // Usuwanie pojazdu z floty
-            // Powrót do main menu
-
-            //2. Zarządzanie Klientami / Customer Management
-
-            // Dodanie klienta do bazy klientów
-            // Usunięcie klienta z bazy klientów
-            // Sprawdzenie listy klientów   
-            // Sprawdzenie listy klientów firmowych
-            // Sprawdzenie listy klientów prywatnych
-            // Sprawdzenie listy wszsytkich klientów, którzy wypożyczyli pojazdy
-
-            //3. Wypożyczalnia Pojazdów
-            // Wybór rodzaju pojazdu do wypożyczenia
-            // Wyświetlenie dostępnych pojazdów z danego rodzaju
-            // Przypisanie pojazdu do klienta z bazy
+            
             DateTime date;
             Fleet vehicle1 = new Fleet() { Brand = "Fiat", Model = "125p", Mileage = 10264, ProductionYear = 1994, ServiceTime = new DateTime(2024, 12, 24), RentalPrice = 350, Type = "Car", Availability = true, OnService = false };
             Fleet vehicle2 = new Fleet() { Brand = "Fiat", Model = "126p", Mileage = 10205, ProductionYear = 1994, ServiceTime = new DateTime(2024, 11, 12), RentalPrice = 350, Type = "Car", Availability = true, OnService = false };
