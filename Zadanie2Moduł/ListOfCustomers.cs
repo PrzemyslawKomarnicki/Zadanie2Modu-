@@ -43,11 +43,13 @@ namespace RentCar
             Customer customer = newCustomer.CreateCustomer();
             customer.Id += Customers.Count;
             Customers.Add(customer);
+            Console.WriteLine($"Yout have successfully added {customer.Name} {customer.Surname}");
         }
         public void AddCustomerToTest(Customer customer)
         {            
             customer.Id += Customers.Count;
             Customers.Add(customer);
+            
         }
         public Customer ChooseCustomer()
         {
@@ -83,7 +85,7 @@ namespace RentCar
             {
                 Console.WriteLine($"Are youe sure you want to remove {customerToRemove.Id}. {customerToRemove.Name} {customerToRemove.Surname}\n1. yes\n2. no");
                 var choice = Console.ReadKey();                
-                bool validChoice = true;
+                bool validChoice = false;
                 do
                 {
                     switch (choice.KeyChar)
@@ -104,7 +106,7 @@ namespace RentCar
                             break;
                     };                    
                 }
-                while(validChoice);
+                while(!validChoice);
             }
             
         }

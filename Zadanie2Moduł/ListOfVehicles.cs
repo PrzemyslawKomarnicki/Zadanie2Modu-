@@ -56,6 +56,7 @@ namespace RentCar
             Fleet vehicleToService = Vehicles.Find(vehicle => vehicle.Id == id);
             if (vehicleToService != null)
             {
+                Console.WriteLine($"You have designated {vehicleToService.Type.ToLower()} {vehicleToService.Brand} {vehicleToService.Model} for services");
                 vehicleToService.OnService = true;
                 vehicleToService.Availability = false;
             }
@@ -72,6 +73,7 @@ namespace RentCar
             Fleet vehicle = newVehicle.CreateNewVehicle();
             vehicle.Id += Vehicles.Count;
             Vehicles.Add(vehicle);
+            Console.WriteLine($"Yout have successfully added {vehicle.Brand} {vehicle.Model}");
         }
         public void AddVehicleTest(Fleet vehicle)
         {            
@@ -94,9 +96,17 @@ namespace RentCar
                 Console.WriteLine("Wrong data, try again: ");
             }
             Fleet returnedVehicle = Vehicles.Find(vehicle => vehicle.Id == id);
-            returnedVehicle.OnService = false;
-            returnedVehicle.Availability = true;            
-            Console.WriteLine($"{returnedVehicle.Type} {returnedVehicle.Brand} {returnedVehicle.Model} hase beed retuernet and available now.");
+            if (returnedVehicle != null)
+            {
+                returnedVehicle.OnService = false;
+                returnedVehicle.Availability = true;
+                Console.WriteLine($"{returnedVehicle.Type} {returnedVehicle.Brand} {returnedVehicle.Model} has been returned and is now available.");
+            }
+            else
+            {
+                Console.WriteLine("Vehicle with that ID is not or service or doesn't exist");
+            }
+            
         }
         public void RemoveVehicle()
         {
@@ -105,8 +115,8 @@ namespace RentCar
             while (type != "Car" && type != "Motorbike" && type != "Bicycle")
             {
                 Console.WriteLine("\nSelect type of vehicle: \n1. Car\n2. Motorbike\n3. Bicycle");
-                var input = Console.ReadKey();
-                type = input.KeyChar switch
+                var input1 = Console.ReadKey();
+                type = input1.KeyChar switch
                 {
                     '1' => type = "Car",
                     '2' => type = "Motorbike",
@@ -127,16 +137,47 @@ namespace RentCar
             while (!int.TryParse(Console.ReadLine(), out id))
             {
                 Console.WriteLine("Wrong data, try again.\nEnter ID of vehicle to remove: ");
-            }
+            }            
             Fleet vehicleToRemove = Vehicles.Find(vehicle => vehicle.Id == id);
-            Vehicles.Remove(vehicleToRemove);
-            Vehicles.Sort((x, y) => x.Id.CompareTo(y.Id));
-            int newId = 1000;
-            foreach (var vehicle in Vehicles)
+            if (vehicleToRemove != null)
             {
-                vehicle.Id = newId;
-                newId++;
+                Console.WriteLine($"Are youe sure you want to remove {vehicleToRemove.Id}. {vehicleToRemove.Brand} {vehicleToRemove.Model}\n1. yes\n2. no");
+                var input2 = Console.ReadKey();
+                bool validChoice = true;
+                do
+                {
+                    switch (input2.KeyChar)
+                    {
+                        case '1':
+                            Vehicles.Remove(vehicleToRemove);
+                            Vehicles.Sort((x, y) => x.Id.CompareTo(y.Id));
+                            int newId = 1000;
+                            foreach (var vehicle in Vehicles)
+                            {
+                                vehicle.Id = newId;
+                                newId++;
+                            }
+                            validChoice = true;
+                            break;
+                        case '2':
+                            Console.WriteLine($"You didn't remove anyone");
+                            validChoice = true;
+                            break;
+                        default:
+                            validChoice = false;
+                            Console.WriteLine("Wrong choice, try again: \n1. yes\n2. no");
+                            break;
+                    }
+                }
+                while (!validChoice);
             }
+            else 
+            { 
+                Console.WriteLine("A vehicle with this ID doesn't exist");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadKey();
+            }
+
         }
         public void DisplayAllVehicles()
         {

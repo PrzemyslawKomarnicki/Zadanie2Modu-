@@ -80,6 +80,7 @@ namespace RentCar
                     case '2':
                         Console.WriteLine("");
                         vehicles.AddVehicle();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
@@ -87,6 +88,7 @@ namespace RentCar
                         Console.WriteLine("");
                         vehicles.ReturnFromService();
                         Console.ReadKey();
+                        Console.WriteLine("Press any key to continue");
                         restart = true;
                         break;
                     case '4':
@@ -97,7 +99,9 @@ namespace RentCar
                     case '5':
                         Console.WriteLine("");
                         vehicles.DisplayAllVehicles();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
+
                         restart = true;
                         break;
                     case '6':
@@ -125,18 +129,21 @@ namespace RentCar
                     case '1':
                         Console.WriteLine("");
                         customers.AddCustomerToList();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
                     case '2':
                         Console.WriteLine("");
                         customers.RemoveCustomerFromList(customers.GetCustomerId());
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
                     case '3':
                         Console.WriteLine("");
                         customers.DisplayAllCustomers();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
@@ -165,21 +172,25 @@ namespace RentCar
                 {
                     case '1':
                         rents.AddRents(customers, vehicles);
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
                     case '2':
                         rents.RemoveRent(customers);
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
                     case '3':
                         vehicles.DisplayAvailableVehicles();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;
                     case '4':
                         rents.DisplayRentedVehicles();
+                        Console.WriteLine("Press any key to continue");
                         Console.ReadKey();
                         restart = true;
                         break;

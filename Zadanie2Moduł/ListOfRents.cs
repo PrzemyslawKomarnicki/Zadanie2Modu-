@@ -19,7 +19,8 @@ namespace RentCar
         {
             RentService rentService = new RentService();
             Rent rent = rentService.CreateNewRent(customers, vehicles);
-            rent.Id += Rents.Count(); 
+            rent.Id += Rents.Count();
+            Console.WriteLine($"Yout have successfully added {rent.Customer.Name} {rent.Customer.Surname}");
             Rents.Add(rent);
         }
         public void RemoveRent(ListOfCustomers customers)
@@ -38,9 +39,20 @@ namespace RentCar
             if (rentToRemove.Customer.OneTimeCustomer)
             {
                 customers.RemoveCustomerFromList(rentToRemove.Customer.Id);
+                Console.WriteLine($"Yout have successfully removed {rentToRemove.Customer.Name} {rentToRemove.Customer.Surname}");
+                Rents.Remove(rentToRemove);
+                Rents.Sort((x, y) => x.Id.CompareTo(y.Id));
+            }            
+            else if (rentToRemove == null)
+            {
+                Console.WriteLine($"Rent with this ID doesn't exist");
             }
-            Rents.Remove(rentToRemove);
-            Rents.Sort((x, y) => x.Id.CompareTo(y.Id));
+            else
+            {
+                Console.WriteLine($"Yout have successfully removed {rentToRemove.Id} {rentToRemove.Vehicle.Type}: {rentToRemove.Vehicle.Brand}, Customer: {rentToRemove.Customer.Name} {rentToRemove.Customer.Surname} ");
+                Rents.Remove(rentToRemove);
+                Rents.Sort((x, y) => x.Id.CompareTo(y.Id));
+            }
 
         }
         public void DisplayRentedVehicles()

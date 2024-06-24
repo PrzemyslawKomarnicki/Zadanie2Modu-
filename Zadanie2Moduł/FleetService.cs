@@ -48,12 +48,13 @@ namespace RentCar
             {
                 Console.WriteLine("Wrond date format, please try again");
             }
+            Console.WriteLine("Please enter rental price of vehicle: ");
             double rentalPrice;
             while (!double.TryParse(Console.ReadLine(), out rentalPrice))
             {
                 Console.WriteLine("Wrong data, please enter again: ");
             }
-            Console.WriteLine("Please enter rental price of vehicle: ");
+            
             
             Fleet vehicle = new Fleet() { Brand = brand, Model = model, Mileage = mileage, ProductionYear = productionYear, ServiceTime = serviceTime, RentalPrice = rentalPrice, Type = type, Availability = true , OnService = false};
             return vehicle;
