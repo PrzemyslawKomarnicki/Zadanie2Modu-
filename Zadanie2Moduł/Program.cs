@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Xml.Linq;
 
-namespace RentCar
+namespace FleetManager
 {
     class Program
     {
