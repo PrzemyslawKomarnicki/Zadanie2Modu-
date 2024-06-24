@@ -28,7 +28,7 @@ namespace RentCar
             } ;
             Console.WriteLine("Please enter brand of vehicle: ");
             string brand = Console.ReadLine();
-            Console.WriteLine("Please enter mark of vehicle: ");
+            Console.WriteLine("Please enter model of vehicle: ");
             string model = Console.ReadLine();
             Console.WriteLine("Please enter production year of vehicle: ");
             int productionYear;
@@ -36,13 +36,20 @@ namespace RentCar
             {
                 Console.WriteLine("Wrong data, please enter again: ");
             }
-            Console.WriteLine("Please enter mileage of vehicle: ");
             int mileage;
-            while (!int.TryParse(Console.ReadLine(), out mileage))
+            if (type != "Bicycle")
             {
-                Console.WriteLine("Wrong data, please enter again: ");
+                Console.WriteLine("Please enter mileage of vehicle: ");                
+                while (!int.TryParse(Console.ReadLine(), out mileage))
+                {
+                    Console.WriteLine("Wrong data, please enter again: ");
+                }
             }
-            Console.WriteLine("Please enter date of service (DD-MM-YYYY): ");
+            else 
+            { 
+                mileage = 0;
+            }
+            Console.WriteLine("Please enter date of service time (DD-MM-YYYY): ");
             DateTime serviceTime;
             while (!DateTime.TryParse(Console.ReadLine(), out serviceTime))
             {
